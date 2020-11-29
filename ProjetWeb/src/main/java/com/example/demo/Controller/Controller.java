@@ -9,14 +9,14 @@ import org.springframework.web.servlet.ModelAndView;
 @RestController
 public class Controller {
 
-    @RequestMapping(value = { "/login" }, method = RequestMethod.POST)
+    @RequestMapping(value = { "/login" }, method = RequestMethod.GET)
     public ModelAndView login() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("login"); // resources/template/login.html
         return modelAndView;
     }
 
-    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
     public ModelAndView register() {
         ModelAndView modelAndView = new ModelAndView();
         // User user = new User();
@@ -25,7 +25,7 @@ public class Controller {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/home", method = RequestMethod.POST)
+    @RequestMapping(value = "/home", method = RequestMethod.GET)
     public ModelAndView home() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("home"); // resources/template/home.html
