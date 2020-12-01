@@ -1,5 +1,7 @@
 package com.example.demo.Model;
 
+import com.sun.istack.NotNull;
+
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -18,8 +20,7 @@ import javax.persistence.Table;
 public class User {
 
     @Id
-   @GeneratedValue(strategy = GenerationType.AUTO)
-   @Column(name = "auth_user_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "first_name")
@@ -34,8 +35,12 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    @Column(name = "mobile")
-    private String mobile;
+    @Column(name = "status")
+    private String status;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "auth_user_role", joinColumns = @JoinColumn(name = "auth_user_id"), inverseJoinColumns = @JoinColumn(name = "auth_role_id"))
+    private Set<Role> roles;
 
     public int getId() {
         return id;
@@ -77,12 +82,20 @@ public class User {
         this.password = password;
     }
 
-    public String getMobile() {
-        return mobile;
+    public String getStatus() {
+        return status;
     }
 
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 
 }
