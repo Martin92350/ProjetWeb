@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.Config;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;

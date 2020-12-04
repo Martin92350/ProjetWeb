@@ -1,7 +1,5 @@
 package com.example.demo.Model;
 
-import com.sun.istack.NotNull;
-
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -21,10 +19,10 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int auth_user_id;
 
     @Column(name = "first_name")
-    private String name;
+    private String first_name;
 
     @Column(name = "last_name")
     private String lastName;
@@ -42,20 +40,20 @@ public class User {
     @JoinTable(name = "auth_user_role", joinColumns = @JoinColumn(name = "auth_user_id"), inverseJoinColumns = @JoinColumn(name = "auth_role_id"))
     private Set<Role> roles;
 
-    public int getId() {
-        return id;
+    public int getAuth_user_id() {
+        return auth_user_id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setAuth_user_id(int auth_user_id) {
+        this.auth_user_id = auth_user_id;
     }
 
-    public String getName() {
-        return name;
+    public String getFirst_name() {
+        return first_name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirst_name(String first_name) {
+        this.first_name = first_name;
     }
 
     public String getLastName() {

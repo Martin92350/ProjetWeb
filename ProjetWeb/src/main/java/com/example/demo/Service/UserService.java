@@ -8,4 +8,8 @@ public interface UserService {
 
     public boolean doesUserExist(User user);
 
+    public User getUserByEmail(String email);
+
+    public String getUsernamebyId(int user_id);
+
 }

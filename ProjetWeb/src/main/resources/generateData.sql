@@ -67,10 +67,10 @@ INSERT INTO auth_user_role (auth_user_id, auth_role_id) values ('1','1');
 INSERT INTO auth_user_role (auth_user_id, auth_role_id) values ('1','2');
 INSERT INTO auth_user_role (auth_user_id, auth_role_id) values ('1','3');
 
-INSERT INTO city (city_id,name) values (1,'Paris');
-INSERT INTO city (city_id,name) values (2,'Nice');
-INSERT INTO city (city_id,name) values (3,'Lyon');
-INSERT INTO city (city_id,name) values (4,'Marseille');
-INSERT INTO city (city_id,name) values (5,'Lille');
+INSERT INTO city (city_id,name) values ('1','Paris');
+INSERT INTO city (city_id,name) values ('2','Nice');
+INSERT INTO city (city_id,name) values ('3','Lyon');
+INSERT INTO city (city_id,name) values ('4','Marseille');
+INSERT INTO city (city_id,name) values ('5','Lille');
 
-INSERT INTO survey (survey_id,name,date,activity,attendance,user_id,city_id) values (1,'Test',date,'Football',22,1,1);
+INSERT INTO survey (survey_id,name,date,activity,attendance,user_id,city_id) values ('1','Test',NULL,'Football','22','1','5');

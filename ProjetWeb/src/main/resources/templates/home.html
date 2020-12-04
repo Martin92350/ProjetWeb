@@ -1,10 +1,40 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
-        <meta charset="ISO-8859-1">
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="{{ asset('../css/home.css') }}" type="text/css">
         <title>Accueil</title>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     </head>
     <body>
-        Hello user, welcome home
+        <div id="app">
+            <p>Hello user, welcome home</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nom du sondage</th>
+                        <th>Date</th>
+                        <th>Activite</th>
+                        <th>Nombre de personnes</th>
+                        <th>Createur du sondage</th>
+                        <th>Ville de rencontre</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="sondage: ${sondages}">
+                        <td th:text="${sondage.name}" />
+                        <td th:text="${sondage.date}" />
+                        <td th:text="${sondage.activity}" />
+                        <td th:text="${sondage.attendance}" />
+                        <td th:text="CREATEUR" />
+                        <td th:text="VILLE" />
+                    </tr>
+                </tbody>
+            </table>
+
+            <a href="/create-survey">Créer un sondage</a>
+        </div>
+
+
     </body>
 </html>

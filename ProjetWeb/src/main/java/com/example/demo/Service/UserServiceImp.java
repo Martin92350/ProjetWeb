@@ -37,5 +37,16 @@ public class UserServiceImp implements UserService {
         return false;
     }
 
+    @Override
+    public User getUserByEmail(String email) {
+        User activeUser = userRepo.getUserByEmail(email);
+        return activeUser;
+    }
+
+    @Override
+    public String getUsernamebyId(int user_id) {
+        String username = userRepo.getUsernamebyId(user_id);
+        return username;
+    }
 
 }
