@@ -3,7 +3,6 @@
     <head>
         <title>Inscription </title>
         <meta charset="utf-8">
-        <!-- link rel="stylesheet" type="text/css" th:href="@{/css/registration.css}" /-->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -24,7 +23,7 @@
                     </div>
                     <div class="form-group">
                         <div class="">
-                            <input th:type="date" th:field="*{date}" placeholder="Date" class="form-control" />
+                            <input th:type="date" name="date" th:field="*{date}" placeholder="Date" class="form-control" />
                         </div>
                     </div>
                     <div class="form-group">
@@ -34,18 +33,25 @@
                     </div>
                     <div class="form-group">
                         <div class="">
-                            <input type="number" th:field="*{attendance}" placeholder="Affluence" class="form-control" />
+                            <input th:type="number" value="664" th:field="*{attendance}" placeholder="Affluence" id="attendance" class="form-control" />
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="">
-                            <select th:each=id="monselect">
-                                <option value="valeur1">Valeur 1</option>
-                                <option value="valeur2" selected>Valeur 2</option>
-                                <option value="valeur3">Valeur 3</option>
+                            <select th:field="*{city_id}">
+                                <option th:each="city,status: ${cities}"
+                                        th:value="${status.index}+1"
+                                        th:text="${city}"/>
                             </select>
                         </div>
                     </div>
+                    <div class="form-group" style="display: none;">
+                        <div class="">
+                            <input th:type="number" th:field="*{user_id}" placeholder="User_id" id="user_id" class="form-control" />
+                        </div>
+                    </div>
+
+
                     <div class="form-group">
                         <div class="">
                             <button type="submit" class="btn btn-primary btn-block">Confirmer</button>
@@ -65,4 +71,12 @@
             </div>
         </div>
     </body>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#attendance").val('');
+            $("#user_id").val(1);
+
+        });
+    </script>
 </html>

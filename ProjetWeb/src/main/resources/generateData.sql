@@ -39,7 +39,7 @@ CREATE TABLE city (
 );
 
 CREATE TABLE survey (
-  survey_id int(11) NOT NULL,
+  survey_id int(11) NOT NULL AUTO_INCREMENT,
   name VARCHAR(45) NULL,
   date DATETIME NULL,
   activity VARCHAR(45) NULL,

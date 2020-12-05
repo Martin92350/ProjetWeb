@@ -54,16 +54,16 @@ public class UserController {
         ModelAndView modelAndView = new ModelAndView();
         // Check for the validations
         if(bindingResult.hasErrors()) {
-            modelAndView.addObject("message", "Please correct the errors in form!");
+            modelAndView.addObject("message", "!");
             modelMap.addAttribute("bindingResult", bindingResult);
         }
         else if(userService.doesUserExist(user)){
-            modelAndView.addObject("message", "user already exists!");
+            modelAndView.addObject("message", "Veuillez rectifier les erreurs du formulaire !");
         }
         // we will save the user if, no binding errors
         else {
             userService.saveUser(user);
-            modelAndView.addObject("message", "User is registered successfully!");
+            modelAndView.addObject("message", "L'utilisateur a été enregistré avec succès !");
         }
         modelAndView.addObject("user", new User());
         modelAndView.setViewName("register");
