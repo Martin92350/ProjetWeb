@@ -33,6 +33,7 @@ public class SurveyController {
     int user_id = 1;
 
     public List<String> returnCities(int user_id) {
+
         List<Survey> surveys = surveyService.getSurveyFromUserId(user_id);
         List<String> cities = new ArrayList<>();
 
@@ -79,24 +80,27 @@ public class SurveyController {
         ModelAndView modelAndView = new ModelAndView();
         Survey survey = new Survey();
 
+        System.out.println("cities = " + cityService.getAllCities().toString());
+
+
         List<Survey> listSurvey = surveyService.getSurveyFromUserId(user_id);
-        List<String> cities = new ArrayList<>();
-        List<String> creators = new ArrayList<>();
+        List<String> cities = cityService.getAllCities();
+//        List<String> creators = new ArrayList<>();
 
-        String testCity = "";
-        String testUsername = "";
-
-        for (int i = 0; i < listSurvey.size(); i++) {
-            testCity = cityService.getCityById(listSurvey.get(i).getCity_id());
-            cities.add(testCity);
-
-            testUsername = userService.getUsernamebyId(listSurvey.get(i).getUser_id());
-            creators.add(testUsername);
-        }
+//        String testCity = "";
+//        String testUsername = "";
+//
+//        for (int i = 0; i < listSurvey.size(); i++) {
+//            testCity = cityService.getCityById(listSurvey.get(i).getCity_id());
+//            cities.add(testCity);
+//
+//            testUsername = userService.getUsernamebyId(listSurvey.get(i).getUser_id());
+//            creators.add(testUsername);
+//        }
 
         modelAndView.addObject("sondages", listSurvey);
         modelAndView.addObject("cities", cities);
-        modelAndView.addObject("creators", creators);
+        //modelAndView.addObject("creators", creators);
         modelAndView.addObject("user_id", user_id);
 
         modelAndView.addObject("survey", survey);
@@ -111,7 +115,7 @@ public class SurveyController {
         survey.setDate(date);
 
         if(bindingResult.hasErrors() && survey.getDate() == null) {
-            List<String> cities = returnCities(user_id);
+            List<String> cities = cityService.getAllCities();
             System.out.println("***** ERROR *****");
 
                     System.out.println("--------" +
@@ -130,7 +134,14 @@ public class SurveyController {
             modelMap.addAttribute("bindingResult", bindingResult);
         }
         else {
-            List<String> cities = returnCities(user_id);
+
+            System.out.println("***** city id *****");
+
+            System.out.println("--------" +
+                    "\nCity = " + survey.getCity_id() +
+                    "\n--------"
+            );
+            List<String> cities = cityService.getAllCities();
             modelMap.addAttribute("cities", cities);
 
             System.out.println("\n***** SUCCESS : GO CHECK DATABASE *****");

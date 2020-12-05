@@ -1,6 +1,9 @@
 DROP TABLE IF EXISTS auth_user_role;
 DROP TABLE IF EXISTS auth_role;
 DROP TABLE IF EXISTS auth_user;
+DROP TABLE IF EXISTS survey;
+DROP TABLE IF EXISTS city;
+
 
 CREATE TABLE auth_role (
     auth_role_id int(11) NOT NULL AUTO_INCREMENT,
@@ -41,7 +44,7 @@ CREATE TABLE city (
 CREATE TABLE survey (
   survey_id int(11) NOT NULL AUTO_INCREMENT,
   name VARCHAR(45) NULL,
-  date DATETIME NULL,
+  date DATE NULL,
   activity VARCHAR(45) NULL,
   attendance INT NULL,
   user_id INT NULL,
