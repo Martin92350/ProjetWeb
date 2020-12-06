@@ -1,54 +1,54 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="utf-8">
-        <title>Accueil</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    </head>
-    <body  style="background-color: #ededed;">
-        <div style="background-color:#337ab7;height:50px;">
-            <p style="color:white;text-align: center;padding-top:1%"> HELLO USER, WELCOME HOME</p>
-        </div>
+<head>
+    <meta charset="utf-8">
+    <title>Accueil</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body  style="background-color: #313030;">
+<div style="background-color:#337ab7;height:50px;">
+    <p style="color:white;text-align: center;padding-top:1%"> HELLO USER, WELCOME HOME</p>
+</div>
 
-        <div class="contenu" style="margin-left:10px">
+<div class="contenu" style="margin-left:10px">
 
-            <div class="vos-sondages">
-                <h2> VOICI VOS SONDAGES</h2>
-                <table style="border: 1px solid black">
-                    <thead style="border: 1px solid black">
-                    <tr style="border: 1px solid black">
-                        <th style="border: 1px solid black;text-align: center" >Nom du sondage</th>
-                        <th style="border: 1px solid black;text-align: center" >Date</th>
-                        <th style="border: 1px solid black;text-align: center" >Activite</th>
-                        <th style="border: 1px solid black;text-align: center" >Nombre de personnes</th>
-                        <th style="border: 1px solid black;text-align: center" >Createur du sondage</th>
-                        <th style="border: 1px solid black;text-align: center" >Ville de rencontre</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr th:each="sondage: ${sondages}" style="border: 1px solid black">
-                        <td style="border: 1px solid black;text-align: center" th:text="${sondage.name}" />
-                        <td style="border: 1px solid black;text-align: center" th:text="${sondage.date}" />
-                        <td style="border: 1px solid black;text-align: center" th:text="${sondage.activity}" />
-                        <td style="border: 1px solid black;text-align: center" th:text="${sondage.attendance}" />
-                        <td style="border: 1px solid black;text-align: center" th:text="CREATEUR" />
-                        <td style="border: 1px solid black;text-align: center" th:text="VILLE" />
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
+    <div class="vos-sondages">
+        <h2 class="form-signin-heading" style="font-size: 20; color: #ededed;">LISTE DES SONDAGES</h2>
+        <table style="border: 1px solid white">
+            <thead style="border: 1px solid white">
+            <tr style="border: 1px solid white">
+                <th style="font-size: 20; color: #ededed; background-color:#0f0f0f;padding:20px;border:solid 1px #ededed;" >Nom du sondage</th>
+                <th style="font-size: 20; color: #ededed; background-color:#0f0f0f;padding:20px;border:solid 1px #ededed;" >Date</th>
+                <th style="font-size: 20; color: #ededed; background-color:#0f0f0f;padding:20px;border:solid 1px #ededed;" >Activite</th>
+                <th style="font-size: 20; color: #ededed; background-color:#0f0f0f;padding:20px;border:solid 1px #ededed;" >Nombre de personnes</th>
+                <th style="font-size: 20; color: #ededed; background-color:#0f0f0f;padding:20px;border:solid 1px #ededed;" >Createur du sondage</th>
+                <th style="font-size: 20; color: #ededed; background-color:#0f0f0f;padding:20px;border:solid 1px #ededed;" >Ville de rencontre</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="sondage: ${sondages}" style="border: 1px solid white">
+                <td style="font-size: 20; color: #ededed; border: 1px solid white;text-align: center" th:text="${sondage.name}" />
+                <td style="font-size: 20; color: #ededed; border: 1px solid white;text-align: center" th:text="${sondage.date}" />
+                <td style="font-size: 20; color: #ededed; border: 1px solid white;text-align: center" th:text="${sondage.activity}" />
+                <td style="font-size: 20; color: #ededed; border: 1px solid white;text-align: center" th:text="${sondage.attendance}" />
+                <td style="font-size: 20; color: #ededed; border: 1px solid white;text-align: center" th:text="CREATEUR" />
+                <td style="font-size: 20; color: #ededed; border: 1px solid white;text-align: center" th:text="VILLE" />
+            </tr>
+            </tbody>
+        </table>
+    </div>
 
-            <div class="btnCreate" style="margin-top:20px">
-                <a href="/create-survey">
-                    <button class="btn btn-lg btn-primary" type="Submit" style="margin-right:10px;">
-                        Créer un sondage
-                    </button>
-                </a>
-            </div>
+    <div class="btnCreate" style="margin-top:20px">
+        <a href="/create-survey">
+            <button class="btn btn-lg btn-primary" type="Submit" style="margin-right:10px;">
+                Créer un sondage
+            </button>
+        </a>
+    </div>
 
-        </div>
+</div>
 
-    </body>
+</body>
 </html>

@@ -1,34 +1,34 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
-    <head>
-        <title>Connexion</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    </head>
+<head>
+    <title>Connexion</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
 
-    <body style="background-color:#ededed;">
-        <div style="background-color:#337ab7;height:50px;"></div>
-        <div class="container-fluid">
-            <div class="row col-lg-4 col-lg-offset-4" style="margin-top: 80px;background-color:#fff;padding:20px;border:solid 1px #ddd;">
-                <!-- <img th:src="@{/images/login.jpg}" class="img-responsive center-block" width="300" height="300" alt="Logo" /> -->
-                <form th:action="@{/login}" method="POST" class="form-signin">
+<body style="background-color:#313030;">
+<div style="background-color:#337ab7;height:50px;"></div>
+<div class="container-fluid">
+    <div class="row col-lg-4 col-lg-offset-4" style="margin-top: 80px;background-color:#0f0f0f;padding:20px;border:solid 1px #0f0f0f;">
+        <!-- <img th:src="@{/images/login.jpg}" class="img-responsive center-block" width="300" height="300" alt="Logo" /> -->
+        <form th:action="@{/login}" method="POST" class="form-signin">
 
-                    <h3 class="form-signin-heading" th:text="Connexion"></h3><br />
+            <h3 class="form-signin-heading" th:text="Connexion" style="font-size: 20; color: #ededed;"></h3><br />
 
-                    <input type="text" id="email" name="email" th:placeholder="Email" class="form-control" /> <br />
-                    <input type="password" placeholder="Mot de passe" id="password" name="password" class="form-control" /> <br />
+            <input type="text" id="email" name="email" th:placeholder="Email" class="form-control" style="background-color:#0f0f0f;padding:20px;border:solid 1px #ededed;"/> <br />
+            <input type="password" placeholder="Mot de passe" id="password" name="password" class="form-control" style="background-color:#0f0f0f;padding:20px;border:solid 1px #ededed;" /> <br />
 
-                    <div align="center" th:if="${param.error}">
-                        <p style="font-size: 20; color: #FF1C19;">L'adresse email ou le mot de passe invalide.</p>
-                    </div>
-
-                    <button class="btn btn-lg btn-primary" name="Submit" value="Login" type="Submit" th:text="Connexion" style="margin-right:10px;"></button>
-                    <a href="/recover-password">Mot de passe oublié ?</a> |
-                    <a href="/register">S'inscrire</a>
-                </form>
+            <div align="center" th:if="${param.error}">
+                <p style="font-size: 20; color: #FF1C19;">L'adresse email ou le mot de passe invalide.</p>
             </div>
-        </div>
-    </body>
+
+            <button class="btn btn-lg btn-primary" name="Submit" value="Login" type="Submit" th:text="Connexion" style="margin-right:10px;"></button>
+            <a href="/recover-password">Mot de passe oublié ?</a> |
+            <a href="/register">S'inscrire</a>
+        </form>
+    </div>
+</div>
+</body>
 </html>

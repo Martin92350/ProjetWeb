@@ -1,8 +1,10 @@
 DROP TABLE IF EXISTS auth_user_role;
 DROP TABLE IF EXISTS auth_role;
 DROP TABLE IF EXISTS auth_user;
+DROP TABLE IF EXISTS auth_user_role;
 DROP TABLE IF EXISTS survey;
 DROP TABLE IF EXISTS city;
+
 
 
 CREATE TABLE auth_role (
