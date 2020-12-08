@@ -10,4 +10,7 @@ public interface SurveyService {
     public List<Survey> getSurveyFromUserId(int user_id);
 
     public void saveSurvey(Survey survey);
+
+    public void deleteSurvey(int survey_id);
+
 }

@@ -24,8 +24,13 @@ public class SurveyServiceImp implements SurveyService {
     }
 
     public void saveSurvey(Survey survey) {
-        System.out.println("\n **** In service Survey - " + survey.getDate());
         surveyRepo.save(survey);
     }
+
+    public void deleteSurvey(int survey_id) {
+        System.out.println("\n **** In service Survey DELETE - ");
+        surveyRepo.deleteSurvey(survey_id);
+    }
+
 
 }

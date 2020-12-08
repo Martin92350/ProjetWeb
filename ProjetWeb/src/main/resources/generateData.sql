@@ -1,7 +1,6 @@
 DROP TABLE IF EXISTS auth_user_role;
 DROP TABLE IF EXISTS auth_role;
 DROP TABLE IF EXISTS auth_user;
-DROP TABLE IF EXISTS auth_user_role;
 DROP TABLE IF EXISTS survey;
 DROP TABLE IF EXISTS city;
 
@@ -78,4 +77,12 @@ INSERT INTO city (city_id,name) values ('3','Lyon');
 INSERT INTO city (city_id,name) values ('4','Marseille');
 INSERT INTO city (city_id,name) values ('5','Lille');
 
-INSERT INTO survey (survey_id,name,date,activity,attendance,user_id,city_id) values ('1','Test',NULL,'Football','22','1','5');
+INSERT INTO survey VALUES('1','Travis Scott à Paris !','2021-06-01','Concert','100','1','1');
+INSERT INTO survey VALUES('2','Prêt pour un five ?','2021-01-07','Football','10','1','2');
+INSERT INTO survey VALUES('3','Découverte nature','2021-03-17','Randonnée','8','1','3');
+INSERT INTO survey VALUES('4','Concours de dunk !','2021-02-11','Basketball','8','1','2');
+INSERT INTO survey VALUES('5','Barbapapa à volonté','2020-12-27','Fête foraine','5','1','5');
+INSERT INTO survey VALUES('6','Révisions avant les partiels','2020-12-17','Etudes','6','1','1');
+INSERT INTO survey VALUES('7','Marche contre la discrimination','2021-02-01','Manifestation','50','1','4');
+INSERT INTO survey VALUES('8','Repas de Noël','2020-12-05','Dinner','15','2','1');
+INSERT INTO survey VALUES('9','Visio sur Skype','2020-09-06','Appel','3','2','4');
