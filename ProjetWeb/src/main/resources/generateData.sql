@@ -4,8 +4,6 @@ DROP TABLE IF EXISTS auth_user;
 DROP TABLE IF EXISTS survey;
 DROP TABLE IF EXISTS city;
 
-
-
 CREATE TABLE auth_role (
     auth_role_id int(11) NOT NULL AUTO_INCREMENT,
     role_name varchar(255) DEFAULT NULL,

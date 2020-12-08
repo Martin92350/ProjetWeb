@@ -7,7 +7,6 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity //(name = "survey")
-//@Table(name = "survey")
 public class Survey {
 
     @Id

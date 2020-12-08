@@ -28,7 +28,6 @@ public class SurveyServiceImp implements SurveyService {
     }
 
     public void deleteSurvey(int survey_id) {
-        System.out.println("\n **** In service Survey DELETE - ");
         surveyRepo.deleteSurvey(survey_id);
     }
 

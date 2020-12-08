@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import javax.transaction.Transactional;
 import java.util.List;
 
-//@Repository
+@Repository
 public interface SurveyRepository extends JpaRepository<Survey, Integer> {
 
     @Query(value = "Select * FROM survey WHERE user_id=?1", nativeQuery = true)

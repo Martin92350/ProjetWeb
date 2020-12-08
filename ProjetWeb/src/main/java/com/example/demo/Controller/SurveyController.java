@@ -127,18 +127,6 @@ public class SurveyController {
 
         List<Survey> listSurvey = surveyService.getSurveyFromUserId(activeUser.getAuth_user_id());
         List<String> cities = cityService.getAllCities();
-//        List<String> creators = new ArrayList<>();
-
-//        String testCity = "";
-//        String testUsername = "";
-//
-//        for (int i = 0; i < listSurvey.size(); i++) {
-//            testCity = cityService.getCityById(listSurvey.get(i).getCity_id());
-//            cities.add(testCity);
-//
-//            testUsername = userService.getUsernamebyId(listSurvey.get(i).getUser_id());
-//            creators.add(testUsername);
-//        }
 
         modelAndView.addObject("sondages", listSurvey);
         modelAndView.addObject("cities", cities);
