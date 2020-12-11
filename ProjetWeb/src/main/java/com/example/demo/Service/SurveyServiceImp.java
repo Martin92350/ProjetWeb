@@ -31,5 +31,10 @@ public class SurveyServiceImp implements SurveyService {
         surveyRepo.deleteSurvey(survey_id);
     }
 
+    public List<Survey> getAllSurvey() {
+        List<Survey> allSurvey = surveyRepo.findAllSurvey();
+        return allSurvey;
+    }
+
 
 }

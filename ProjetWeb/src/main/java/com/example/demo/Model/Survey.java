@@ -16,42 +16,29 @@ public class Survey {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "date")
-    private Date date;
+    @Column(name = "date_one")
+    private Date date_one;
 
-    @JoinColumn(foreignKey = @ForeignKey(name = "FK_city_id"))
-    private int city_id;
+    @Column(name = "date_two")
+    private Date date_two;
+
+    @Column(name = "date_three")
+    private Date date_three;
+
+    @JoinColumn(foreignKey = @ForeignKey(name = "FK_city_id_one"))
+    private int city_id_one;
+
+    @JoinColumn(foreignKey = @ForeignKey(name = "FK_city_id_two"))
+    private int city_id_two;
+
+    @JoinColumn(foreignKey = @ForeignKey(name = "FK_city_id_three"))
+    private int city_id_three;
 
     @JoinColumn(foreignKey = @ForeignKey(name = "FK_user_id"))
     private int user_id;
 
-
-
-
-//    private String city_name;
-//
-//    private String username;
-
-//    public String getCity_name() {
-//        return city_name;
-//    }
-//
-//    public void setCity_name(String city_name) {
-//        this.city_name = city_name;
-//    }
-//
-//    public String getUsername() {
-//        return username;
-//    }
-//
-//    public void setUsername(String username) {
-//        this.username = username;
-//    }
-
-    //@Column(name = "activity")
     private String activity;
 
-    //@Column(name = "attendance")
     private int attendance;
 
     public int getSurvey_id() {
@@ -70,12 +57,28 @@ public class Survey {
         this.name = name;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getDate_one() {
+        return date_one;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setDate_one(Date date_one) {
+        this.date_one = date_one;
+    }
+
+    public Date getDate_two() {
+        return date_two;
+    }
+
+    public void setDate_two(Date date_two) {
+        this.date_two = date_two;
+    }
+
+    public Date getDate_three() {
+        return date_three;
+    }
+
+    public void setDate_three(Date date_three) {
+        this.date_three = date_three;
     }
 
     public int getUser_id() {
@@ -84,14 +87,6 @@ public class Survey {
 
     public void setUser_id(int user_id) {
         this.user_id = user_id;
-    }
-
-    public int getCity_id() {
-        return city_id;
-    }
-
-    public void setCity_id(int city_id) {
-        this.city_id = city_id;
     }
 
     public String getActivity() {
@@ -109,4 +104,29 @@ public class Survey {
     public void setAttendance(int attendance) {
         this.attendance = attendance;
     }
+
+    public int getCity_id_one() {
+        return city_id_one;
+    }
+
+    public void setCity_id_one(int city_id_one) {
+        this.city_id_one = city_id_one;
+    }
+
+    public int getCity_id_two() {
+        return city_id_two;
+    }
+
+    public void setCity_id_two(int city_id_two) {
+        this.city_id_two = city_id_two;
+    }
+
+    public int getCity_id_three() {
+        return city_id_three;
+    }
+
+    public void setCity_id_three(int city_id_three) {
+        this.city_id_three = city_id_three;
+    }
+
 }
