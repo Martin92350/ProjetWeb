@@ -1,0 +1,269 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" >
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<head>
+    <title>Bienvenue sur mon site !</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <!-- <link rel="stylesheet" media="screen" type="text/css" title="Design" href="index.css" />  -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<style>
+
+    body{
+
+        background-color: #313030;
+    }
+
+    h1{
+
+        color : #337ab7;
+        position: absolute;
+        top :20px;
+        left:610px;
+
+    }
+
+    h2{
+        color :#337ab7;
+        font-size:100%;
+        position:absolute;
+        margin-top: 20px;
+        margin-left: 20px;
+    }
+
+    h3{
+        color :#337ab7;
+        font-size:100%;
+        position:absolute;
+        margin-top: 80px;
+        margin-left: 20px;
+
+    }
+
+    a{
+        color :black;
+        font-size:100%;
+        position:absolute;
+        margin-top: 77px;
+        margin-left: 70px;
+    }
+
+    h7{
+        color :#8a8c8d;
+        font-size:80%;
+        position:absolute;
+        margin-top: 34px;
+        margin-left: 20px;
+    }
+
+    h8{
+        color :#8a8c8d;
+        font-size:80%;
+        position:absolute;
+        margin-top: 34px;
+        margin-left: 615px;
+    }
+
+    h4{
+        color :#337ab7;
+        font-size:100%;
+        position:absolute;
+        margin-top: 150px;
+        margin-left: 20px;
+    }
+
+    h5{
+        color :#337ab7;
+        font-size:100%;
+        position:absolute;
+        margin-top: 250px;
+        margin-left: 20px;
+    }
+
+    h6{
+        color :black;
+        font-size:100%;
+        position:absolute;
+        margin-top: 20px;
+        margin-left: 640px;
+    }
+
+
+
+    input[type="checkbox"]{
+
+        display:inline-block;
+        margin-right:10px;
+        margin-top:20px;
+
+    }
+
+
+    button{
+
+        height:40px;
+        /* margin-top:30px;
+        margin-right:40px; */
+        position: absolute;
+        top:48px;
+        left:1200px;
+        background-color: #337ab7;
+        border: 1px solid #337ab7;
+        font-size: 20px;
+        color:#ededed
+
+    }
+
+    #vote{
+        position:absolute;
+        height:30px;
+        background-color: #337ab7;
+        border: 1px solid #337ab7;
+        font-size: 20px;
+        color:#ededed;
+        top:380px;
+        left:380px;
+        border-radius: 5px;
+
+    }
+
+    #close{
+
+        position:absolute;
+        height:20px;
+        width: 20px;
+        color:#ededed;
+        background-color: #b11f1f;
+        border: 1px solid #b11f1f;
+        font-size:18px;
+        top: 35px;
+        left: 795px;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 150px;
+        background: #b11f1f;
+        box-shadow:  7px 7px 0px #ededed,
+        -7px -7px 0px #ededed;
+
+        /* box-shadow:        7px 7px 100px #dbdfe5,
+       -7px -7px 100px #dfe3e9; */
+
+    }
+
+    section{
+
+        position:absolute;
+        top:100px;
+        left:580px;
+        /* right:500px; */
+
+    }
+
+    div{
+
+        width:800px;
+        height:400px;
+        background-color: #ededed ;
+        margin : 25px;
+        /* border: 3px solid #337ab7; */
+
+    }
+
+    p{
+
+        position : absolute;
+        margin-top : 180px;
+        margin-left : 250px;
+        padding : 8px 48px;
+
+    }
+
+    label{
+        position:relative;
+        left:-53px;
+        top:-20px;
+    }
+
+    label::before{
+
+        position:absolute;
+
+    }
+
+    p1{
+
+        position : absolute;
+        margin-top : 280px;
+        margin-left : 250px;
+        padding : 8px 48px;
+
+    }
+
+
+</style>
+
+<body>
+
+<h1>Liste de mes sondages</h1>
+<button class="btn btn-lg btn-primary"  name="Submit" value="Create" type="Submit">
+    creer un sondage
+</button>
+
+<section>
+
+    <div>
+        <h2>[Nom du Sondage]</h2>
+        <h7>par [Nom du createur]</h7>
+        <button id="close">X</button>
+        <h3>Activite:</h3>
+        <a>[ACTIVITE]</a>
+        <h4>Propositions de lieux pour cette activite:</h4>
+        <p>
+            <input type="checkbox" id="city_one"/>
+            <label for="city_one">[city_one]</label>
+            <input type="checkbox" id="city_two"/>
+            <label for="city_two">[city_two]</label>
+            <input type="checkbox" id="city_three"/>
+            <label for="city_three">[city_three]</label>
+        </p>
+        <h5>Propositions de date pour cette activite:</h5>
+        <p1>
+            <input type="checkbox" id="date_one"/>
+            <label for="date_one">[date_one]</label>
+            <input type="checkbox" id="date_two"/>
+            <label for="date_two">[date_two]</label>
+            <input type="checkbox" id="date_three"/>
+            <label for="date_three">[date_three]</label>
+        </p1>
+        <h6>[Attendance]</h6>
+        <h8>personnes attendues</h8>
+        <button id="vote"  name="Submit" value="Create" type="Submit">Soumettre votre vote</button>
+    </div>
+
+</section>
+
+<script>
+    function deleteSurvey(survey_id) {
+        $.ajax({
+            type: 'DELETE',
+            url: "/home/"+survey_id,
+            contentType: 'text/plain',
+            success:function(response) {
+                console.log("good");
+            },
+            error : function(response){
+                console.log("wrong");
+            }
+        });
+        document.location.reload();
+
+    }
+</script>
+
+</body>
+</html>
