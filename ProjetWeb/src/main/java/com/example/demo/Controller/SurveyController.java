@@ -67,23 +67,34 @@ public class SurveyController {
 
         List<Survey> survey = surveyService.getSurveyFromUserId(activeUser.getAuth_user_id());
         List<Survey> allSurvey = surveyService.getAllSurvey();
-        List<String> cities = new ArrayList<>();
-        List<String> creators = new ArrayList<>();
 
-//        String testCity = "";
-//        String testUsername = "";
-//
-//        for (int i = 0; i < survey.size(); i++) {
-//            testCity = cityService.getCityById(survey.get(i).getCity_id());
-//            cities.add(testCity);
-//
-//            testUsername = userService.getUsernamebyId(survey.get(i).getUser_id());
-//            creators.add(testUsername);
-//        }
+        List<Boolean> checkboxDates = new ArrayList<>();
+        List<Boolean> checkboxCities = new ArrayList<>();
+
+        Boolean date1 = false;
+        Boolean date2 = false;
+        Boolean date3 = false;
+        Boolean city1 = false;
+        Boolean city2 = false;
+        Boolean city3 = false;
+
+        checkboxDates.add(date1);
+        checkboxDates.add(date2);
+        checkboxDates.add(date3);
+        checkboxCities.add(city1);
+        checkboxCities.add(city2);
+        checkboxCities.add(city3);
 
         modelAndView.addObject("user_id", activeUser.getAuth_user_id());
         modelAndView.addObject("all_sondages", allSurvey);
         modelAndView.addObject("sondages", survey);
+
+        modelAndView.addObject("checkboxesDates", checkboxDates);
+        modelAndView.addObject("checkboxCities", checkboxCities);
+
+        System.out.println("liste dates Boolean : " + checkboxDates.toString());
+        System.out.println("liste cities Boolean : " + checkboxCities.toString());
+        System.out.println("liste dates : " + allSurvey.get(0).getDate_one());
 
         modelAndView.setViewName("home"); // resources/template/home.html
         return modelAndView;
@@ -111,7 +122,6 @@ public class SurveyController {
 
     @RequestMapping(value = "/home/{survey_id}", method = RequestMethod.DELETE)
     public String deleteSurvey(@PathVariable("survey_id") int survey_id) {
-        System.out.println("SONDAGE ID = " + survey_id);
         ModelAndView modelAndView = new ModelAndView();
 
         surveyService.deleteSurvey(survey_id);
@@ -130,6 +140,22 @@ public class SurveyController {
 
         modelAndView.setViewName("home"); // resources/template/home.html
         return "home";
+    }
+
+    @RequestMapping(value = "/detail-survey/{survey_id}", method = RequestMethod.POST)
+    public ModelAndView detailSurvey(@PathVariable("survey_id") int survey_id) {
+        ModelAndView modelAndView = new ModelAndView();
+
+        Survey survey = surveyService.getSurvey(survey_id);
+
+        System.out.println("Le sondage : " + survey.getName());
+
+        modelAndView.addObject("survey", survey);
+        modelAndView.addObject("user_id", user_id);
+
+        modelAndView.setViewName("detail-survey"); // resources/template/home.html
+        return modelAndView;
+        //return "home";
     }
 
     @RequestMapping(value="/create-survey", method=RequestMethod.POST)

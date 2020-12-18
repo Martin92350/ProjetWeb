@@ -62,39 +62,90 @@
 
             <div class="all-sondages">
                 <h2 class="form-signin-heading" style="font-size: 20; color: #ededed;">LISTE DE TOUS LES SONDAGES</h2>
-                <table style="border: 1px solid white">
-                    <thead style="border: 1px solid white">
-                    <tr style="border: 1px solid white">
-                        <th style="font-size: 20; color: #ededed; background-color:#0f0f0f;padding:20px;border:solid 1px #ededed;" >Nom du sondage</th>
-                        <th style="font-size: 20; color: #ededed; background-color:#0f0f0f;padding:20px;border:solid 1px #ededed;" >Activite</th>
-                        <th style="font-size: 20; color: #ededed; background-color:#0f0f0f;padding:20px;border:solid 1px #ededed;" >Nombre de personnes</th>
-                        <th style="font-size: 20; color: #ededed; background-color:#0f0f0f;padding:20px;border:solid 1px #ededed;" >Createur du sondage</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr th:each="all_sondage: ${all_sondages}" style="border: 1px solid white">
-                        <td style="font-size: 20; color: #ededed; border: 1px solid white;text-align: center" th:text="${all_sondage.name}" />
-                        <td style="font-size: 20; color: #ededed; border: 1px solid white;text-align: center" th:text="${all_sondage.activity}" />
-                        <td style="font-size: 20; color: #ededed; border: 1px solid white;text-align: center" th:text="${all_sondage.attendance}" />
-                        <td style="font-size: 20; color: #ededed; border: 1px solid white;text-align: center" th:text="CREATEUR" />
 
-                        <!--  ******  CHANGEMENT *******  -->
+                <div th:each="all_sondage: ${all_sondages}" style="color:white">
+                    <h3> Nom du sondage :</h3>
+                    <p th:text="${all_sondage.name}"/>
+                    <h3> Activité :</h3>
+                    <p th:text="${all_sondage.activity}"/>
+                    <h3> Nombre de personnes :</h3>
+                    <p th:text="${all_sondage.attendance}"/>
+                    <h3> Créateur :</h3>
+                    <p th:text="${all_sondage.user_id}"/>
+                    <h3> Dates :</h3>
+                    <div th:each="checkbox: ${checkboxes}" style="color:white">
+                        <input type="checkbox" th:checked="${checkbox}"/>
+                        <label class="custom-control-label" th:text="${all_sondage.date_one}"/>
+                    </div>
+<!--                        <div>-->
+<!--                            <input type="checkbox" th:checked="${checkbox.date1}"/>-->
+<!--                            <label class="custom-control-label" th:text="${all_sondage.date_one}"/>-->
+<!--                        </div>-->
+<!--                        <div>-->
+<!--                            <input type="checkbox" th:checked="${checkbox.date2}"/>-->
+<!--                            <label class="custom-control-label" th:text="${all_sondage.date_two}"/>-->
+<!--                        </div>-->
+<!--                        <div>-->
+<!--                            <input type="checkbox" th:checked="${checkbox.date3}"/>-->
+<!--                            <label class="custom-control-label" th:text="${all_sondage.date_three}"/>-->
+<!--                        </div>-->
+<!--                        <h3> Villes :</h3>-->
+<!--                        <div>-->
+<!--                            <input type="checkbox" th:checked="${checkbox.city1}"/>-->
+<!--                            <label class="custom-control-label" th:text="${all_sondage.city_id_one}"/>-->
+<!--                        </div>-->
+<!--                        <div>-->
+<!--                            <input type="checkbox" th:checked="${checkbox.city2}"/>-->
+<!--                            <label class="custom-control-label" th:text="${all_sondage.city_id_two}"/>-->
+<!--                        </div>-->
+<!--                        <div>-->
+<!--                            <input type="checkbox" th:checked="${checkbox.city3}"/>-->
+<!--                            <label class="custom-control-label" th:text="${all_sondage.city_id_three}"/>-->
+<!--                        </div>-->
+<!--                        <div>-->
+                            <button class="btn btn-lg btn-primary redirect" th:onclick="'javascript:vote()'"
+                                    type="Submit" style="margin-right:10px;">
+                                Vote
+                            </button>
+                        </div>
+                    <br/><br/>
+                </div>
 
-<!--                        <td>-->
-<!--                            <a  target="/home">-->
-<!--                                <button class="btn btn-lg btn-primary deleteBtn"-->
-<!--                                        th:onclick="'javascript:deleteSurvey(' + ${all_sondage.survey_id} + ')'"-->
-<!--                                        type="Submit" style="margin-right:10px;">-->
-<!--                                    X-->
-<!--                                </button>-->
-<!--                            </a>-->
-<!--                        </td>-->
 
-                        <!--  *************************  -->
 
-                    </tr>
-                    </tbody>
-                </table>
+<!--                <table style="border: 1px solid white">-->
+<!--                    <thead style="border: 1px solid white">-->
+<!--                        <tr style="border: 1px solid white">-->
+<!--                            <th style="font-size: 20; color: #ededed; background-color:#0f0f0f;padding:20px;border:solid 1px #ededed;" >Nom du sondage</th>-->
+<!--                            <th style="font-size: 20; color: #ededed; background-color:#0f0f0f;padding:20px;border:solid 1px #ededed;" >Activite</th>-->
+<!--                            <th style="font-size: 20; color: #ededed; background-color:#0f0f0f;padding:20px;border:solid 1px #ededed;" >Nombre de personnes</th>-->
+<!--                            <th style="font-size: 20; color: #ededed; background-color:#0f0f0f;padding:20px;border:solid 1px #ededed;" >Createur du sondage</th>-->
+<!--                            <th style="font-size: 20; color: #ededed; background-color:#0f0f0f;padding:20px;border:solid 1px #ededed;" >Date 1</th>-->
+<!--                            <th style="font-size: 20; color: #ededed; background-color:#0f0f0f;padding:20px;border:solid 1px #ededed;" >City 3</th>-->
+<!--                        </tr>-->
+<!--                    </thead>-->
+<!--                    <tbody>-->
+<!--                        <tr th:each="all_sondage: ${all_sondages}" style="border: 1px solid white">-->
+<!--                            <td style="font-size: 20; color: #ededed; border: 1px solid white;text-align: center" th:text="${all_sondage.name}" />-->
+<!--                            <td style="font-size: 20; color: #ededed; border: 1px solid white;text-align: center" th:text="${all_sondage.activity}" />-->
+<!--                            <td style="font-size: 20; color: #ededed; border: 1px solid white;text-align: center" th:text="${all_sondage.attendance}" />-->
+<!--                            <td style="font-size: 20; color: #ededed; border: 1px solid white;text-align: center" th:text="CREATEUR" />-->
+<!--                            <td style="font-size: 20; color: #ededed; border: 1px solid white;text-align: center">-->
+<!--                                <input type="radio" name="radios" id="radio1" />-->
+<!--                            </td>-->
+<!--                            <td style="font-size: 20; color: #ededed; border: 1px solid white;text-align: center" th:text="${all_sondage.city_id_one}" />-->
+
+
+<!--&lt;!&ndash;                              ******  CHANGEMENT *******&ndash;&gt;-->
+
+
+
+<!--&lt;!&ndash;                              *************************&ndash;&gt;-->
+
+
+<!--                        </tr>-->
+<!--                    </tbody>-->
+<!--                </table>-->
             </div>
 
         </div>
@@ -115,6 +166,10 @@
                 });
                 document.location.reload();
 
+            }
+
+            function vote() {
+               console.log("hi");
             }
         </script>
         <!--  *************************  -->

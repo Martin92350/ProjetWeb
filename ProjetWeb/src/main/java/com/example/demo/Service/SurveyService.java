@@ -16,4 +16,6 @@ public interface SurveyService {
 
     public List<Survey> getAllSurvey();
 
+    public Survey getSurvey(int survey_id);
+
 }

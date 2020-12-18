@@ -36,5 +36,11 @@ public class SurveyServiceImp implements SurveyService {
         return allSurvey;
     }
 
+    public Survey getSurvey(int survey_id){
+        Survey survey = surveyRepo.getSurvey(survey_id);
+        return survey;
+    }
+
+
 
 }
