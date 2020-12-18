@@ -108,6 +108,7 @@ CREATE TABLE survey (
      ON UPDATE NO ACTION);
 
 
+
 INSERT INTO auth_user (auth_user_id,first_name,last_name,email,password,status) values (1,'Ankit','Wasankar','admin@gmail.com','$2a$10$DD/FQ0hTIprg3fGarZl1reK1f7tzgM4RuFKjAKyun0Si60w6g3v5i','VERIFIED');
 INSERT INTO auth_user (auth_user_id,first_name,last_name,email,password,status) values (2,'Ramya','Alizée','ramya@gmail.com','$2a$10$uUtZygLq2tEu3R7juBFPsuGWqL8uXhbWrqt5WceaGYao65fR8LCbq','VERIFIED');
 

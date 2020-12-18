@@ -143,10 +143,6 @@ public class SurveyController {
                                      @RequestParam("date_two") @DateTimeFormat(pattern = "yyyy-MM-dd") Date dateTwo,
                                      @RequestParam("date_three") @DateTimeFormat(pattern = "yyyy-MM-dd") Date dateThree ) {
         ModelAndView modelAndView = new ModelAndView();
-        System.out.println("user_id du sondage : " + survey.getUser_id() +
-                            "\n nom du sondae : " + survey.getName() +
-                            "\n Affluence du sondage : " + survey.getAttendance()
-        );
 
         survey.setUser_id(activeUser.getAuth_user_id());
         survey.setDate_one(dateOne);
