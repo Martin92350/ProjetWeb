@@ -1,4 +1,4 @@
-# Sondage & Vote 
+# Sondage & Vote - Groupe 6 : Martin NOËL et Brandon RAMMOHAN - 4A-UFA Classe 42
  
 ## Présentation du Projet
 Le site permet de :
