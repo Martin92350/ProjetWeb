@@ -147,7 +147,7 @@
         box-shadow:  7px 7px 0px #ededed,
         -7px -7px 0px #ededed;
 
-        /* box-shadow:        7px 7px 100px #dbdfe5,
+        box-shadow: 7px 7px 100px #dbdfe5,
        -7px -7px 100px #dfe3e9; */
 
     }
@@ -191,6 +191,7 @@
 
     .button {
         text-align : center;
+        margin-bottom : 10px;
     }
 
     label{
@@ -219,51 +220,58 @@
 
 <body>
 
-<h1 id="title-my-survey">Liste de mes sondages</h1>
-<button class="btn btn-lg btn-primary"  name="Submit" value="Create" type="Submit">
-    creer un sondage
-</button>
+<h1 id="title-my-survey">Liste des sondages</h1>
+<div class="button">
+    <a href="/create-survey">
+        <button class="btn btn-lg btn-primary"  name="Submit" value="Create" type="Submit">
+            Créer un sondage
+        </button>
+    </a>
+</div>
 
 <section>
 
-    <div th:each="sondage: ${sondages}" class="container">
+    <div th:each="sondage, iStat : ${all_sondages}" class="container">
         <div>
-            <button id="close">X</button>
+            <button id="close"
+                    th:onclick="'javascript:deleteSurvey(' + ${sondage.survey_id} + ')'">
+                X
+            </button>
         </div>
 
         <div>
             <h2 th:text="${sondage.name}"/>
-            <p th:text="CREATEUR"/>
+            <p th:text="'crée par ' +  ${creators[iStat.index]}"/>
         </div>
 
         <div>
             <h2>Activite:</h2>
-            <p th:text="${sondage.activity}" />
+            <p th:text=" ${sondage.activity}" />
         </div>
 
         <div>
-            <h2>Propositions de lieux pour cette activite:</h2>
+            <h2>Propositions de lieux pour cette activité:</h2>
             <p class="checkboxes">
                 <input type="checkbox" id="city_one"/>
-                <label for="city_one">[city_one]</label>
+                <label for="city_one" id="check1" th:text="${citiesOne[iStat.index]}" />
 
                 <input type="checkbox" id="city_two"/>
-                <label for="city_two">[city_two]</label>
+                <label for="city_two" id="check2" th:text="${citiesTwo[iStat.index]}" />
 
                 <input type="checkbox" id="city_three"/>
-                <label for="city_three">[city_three]</label>
+                <label for="city_three" id="check3" th:text="${citiesThree[iStat.index]}" />
             </p>
         </div>
 
         <div>
-            <h2>Propositions de dates pour cette activite:</h2>
+            <h2>Propositions de dates pour cette activité:</h2>
             <p class="checkboxes">
                 <input type="checkbox" id="date_one"/>
-                <label for="date_one">[date_one]</label>
+                <label for="date_one" th:text="${#dates.format(sondage.date_one, 'dd/MM/yyyy')}" />
                 <input type="checkbox" id="date_two"/>
-                <label for="date_two">[date_two]</label>
+                <label for="date_two" th:text="${#dates.format(sondage.date_two, 'dd/MM/yyyy')}" />
                 <input type="checkbox" id="date_three"/>
-                <label for="date_three">[date_three]</label>
+                <label for="date_three" th:text="${#dates.format(sondage.date_three, 'dd/MM/yyyy')}" />
             </p>
         </div>
 
@@ -272,7 +280,7 @@
             <p>personnes attendues</p>
         </div>
         <div class="button">
-            <button id="vote"  name="Submit" value="Create" type="Submit">Soumettre votre vote</button>
+            <button id="vote" th:onclick="'javascript:vote(' + ${sondage.survey_id} + ')'" name="Submit" value="Create" type="Submit">Soumettre votre vote</button>
         </div>
     </div>
 
@@ -292,8 +300,14 @@
             }
         });
         document.location.reload();
+    }
+
+    function vote(survey_id) {
+        console.log("survey_id : ", survey_id);
+        console.log("checkbox : ", $('#check1').is(':checked'));
 
     }
+
 </script>
 
 </body>

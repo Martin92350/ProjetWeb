@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 
 @Service
 public class UserServiceImp implements UserService {
@@ -47,6 +49,13 @@ public class UserServiceImp implements UserService {
     public String getUsernamebyId(int user_id) {
         String username = userRepo.getUsernamebyId(user_id);
         return username;
+    }
+
+    public List<String> getAllCreators() {
+        List<String> creators = new ArrayList<>();
+        creators = userRepo.getAllCreators();
+        System.out.println("CREATORS == " + creators.toString());
+        return creators;
     }
 
 }

@@ -67,6 +67,13 @@ public class SurveyController {
 
         List<Survey> survey = surveyService.getSurveyFromUserId(activeUser.getAuth_user_id());
         List<Survey> allSurvey = surveyService.getAllSurvey();
+        List<String> creators = userService.getAllCreators();
+
+        List<String> citiesOne = cityService.getAllCitiesOne();
+        List<String> citiesTwo = cityService.getAllCitiesTwo();
+        List<String> citiesThree = cityService.getAllCitiesThree();
+
+
 
         List<Boolean> checkboxDates = new ArrayList<>();
         List<Boolean> checkboxCities = new ArrayList<>();
@@ -88,6 +95,11 @@ public class SurveyController {
         modelAndView.addObject("user_id", activeUser.getAuth_user_id());
         modelAndView.addObject("all_sondages", allSurvey);
         modelAndView.addObject("sondages", survey);
+        modelAndView.addObject("creators", creators);
+
+        modelAndView.addObject("citiesOne", citiesOne);
+        modelAndView.addObject("citiesTwo", citiesTwo);
+        modelAndView.addObject("citiesThree", citiesThree);
 
         modelAndView.addObject("checkboxesDates", checkboxDates);
         modelAndView.addObject("checkboxCities", checkboxCities);
