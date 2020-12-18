@@ -16,4 +16,13 @@ public interface CityRepository extends JpaRepository<City, Integer> {
     @Query(value="SELECT name FROM city", nativeQuery = true)
     public List<String> getAllCities();
 
+    @Query(value="SELECT city.name FROM city INNER JOIN survey ON city.city_id=survey.city_id_one ORDER BY survey_id", nativeQuery = true)
+    public List<String> getAllCitiesOne();
+
+    @Query(value="SELECT city.name FROM city INNER JOIN survey ON city.city_id=survey.city_id_two ORDER BY survey_id", nativeQuery = true)
+    public List<String> getAllCitiesTwo();
+
+    @Query(value="SELECT city.name FROM city INNER JOIN survey ON city.city_id=survey.city_id_three ORDER BY survey_id", nativeQuery = true)
+    public List<String> getAllCitiesThree();
+
 }

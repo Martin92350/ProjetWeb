@@ -2,9 +2,11 @@ package com.example.demo.Controller;
 
 import com.example.demo.Model.Survey;
 import com.example.demo.Model.User;
+import com.example.demo.Model.Vote;
 import com.example.demo.Service.CityService;
 import com.example.demo.Service.SurveyService;
 import com.example.demo.Service.UserService;
+import com.example.demo.Service.VoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.Authentication;
@@ -30,24 +32,12 @@ public class SurveyController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    VoteService voteService;
+
 
     User activeUser;
     int user_id = 1;
-
-//    public List<String> returnCities(int user_id) {
-//
-//        List<Survey> surveys = surveyService.getSurveyFromUserId(user_id);
-//        List<String> cities = new ArrayList<>();
-//
-//        String testCity = "";
-//
-//        for (int i = 0; i < surveys.size(); i++) {
-//            testCity = cityService.getCityById(surveys.get(i).getCity_id());
-//            cities.add(testCity);
-//        }
-//
-//        return cities;
-//    }
 
     @RequestMapping(value = "/home", method = RequestMethod.GET)
     public ModelAndView home() {
@@ -58,34 +48,46 @@ public class SurveyController {
 
         activeUser = userService.getUserByEmail(currentPrincipalName);
 
-        System.out.println("active user details are : \n" +
-                "\nId = " + activeUser.getAuth_user_id() +
-                "\nFirst Name = " + activeUser.getFirst_name() +
-                "\nLast Name = " + activeUser.getLastName() +
-                "\nEmail = " + activeUser.getEmail()
-        );
-
         List<Survey> survey = surveyService.getSurveyFromUserId(activeUser.getAuth_user_id());
         List<Survey> allSurvey = surveyService.getAllSurvey();
-        List<String> cities = new ArrayList<>();
-        List<String> creators = new ArrayList<>();
+        List<String> creators = userService.getAllCreators();
 
-//        String testCity = "";
-//        String testUsername = "";
-//
-//        for (int i = 0; i < survey.size(); i++) {
-//            testCity = cityService.getCityById(survey.get(i).getCity_id());
-//            cities.add(testCity);
-//
-//            testUsername = userService.getUsernamebyId(survey.get(i).getUser_id());
-//            creators.add(testUsername);
-//        }
+        List<String> citiesOne = cityService.getAllCitiesOne();
+        List<String> citiesTwo = cityService.getAllCitiesTwo();
+        List<String> citiesThree = cityService.getAllCitiesThree();
+
+
+
+        List<Boolean> checkboxDates = new ArrayList<>();
+        List<Boolean> checkboxCities = new ArrayList<>();
+
+        Boolean date1 = false;
+        Boolean date2 = false;
+        Boolean date3 = false;
+        Boolean city1 = false;
+        Boolean city2 = false;
+        Boolean city3 = false;
+
+        checkboxDates.add(date1);
+        checkboxDates.add(date2);
+        checkboxDates.add(date3);
+        checkboxCities.add(city1);
+        checkboxCities.add(city2);
+        checkboxCities.add(city3);
 
         modelAndView.addObject("user_id", activeUser.getAuth_user_id());
         modelAndView.addObject("all_sondages", allSurvey);
         modelAndView.addObject("sondages", survey);
+        modelAndView.addObject("creators", creators);
 
-        modelAndView.setViewName("home"); // resources/template/home.html
+        modelAndView.addObject("citiesOne", citiesOne);
+        modelAndView.addObject("citiesTwo", citiesTwo);
+        modelAndView.addObject("citiesThree", citiesThree);
+
+        modelAndView.addObject("checkboxesDates", checkboxDates);
+        modelAndView.addObject("checkboxCities", checkboxCities);
+
+        modelAndView.setViewName("home2"); // resources/template/home.html
         return modelAndView;
     }
 
@@ -94,13 +96,8 @@ public class SurveyController {
         ModelAndView modelAndView = new ModelAndView();
         Survey survey = new Survey();
 
-        //List<Survey> listSurvey = surveyService.getSurveyFromUserId(activeUser.getAuth_user_id());
-        //List<Survey> allSurvey = surveyService.getAllSurvey();
-
         List<String> cities = cityService.getAllCities();
 
-        //modelAndView.addObject("sondages", listSurvey);
-        //modelAndView.addObject("all_sondages", allSurvey);
         modelAndView.addObject("cities", cities);
         modelAndView.addObject("user_id", user_id);
 
@@ -111,7 +108,6 @@ public class SurveyController {
 
     @RequestMapping(value = "/home/{survey_id}", method = RequestMethod.DELETE)
     public String deleteSurvey(@PathVariable("survey_id") int survey_id) {
-        System.out.println("SONDAGE ID = " + survey_id);
         ModelAndView modelAndView = new ModelAndView();
 
         surveyService.deleteSurvey(survey_id);
@@ -128,8 +124,17 @@ public class SurveyController {
         //modelAndView.addObject("creators", creators);
         modelAndView.addObject("user_id", user_id);
 
-        modelAndView.setViewName("home"); // resources/template/home.html
+        modelAndView.setViewName("home2"); // resources/template/home.html
         return "home";
+    }
+
+    @RequestMapping(value = "/vote/{array}/survey_id/{survey_id}", method = RequestMethod.POST)
+    public String getVote(@PathVariable("array") List<Boolean> array, @PathVariable("survey_id") String survey_id) {
+        ModelAndView modelAndView = new ModelAndView();
+        System.out.println("survey in param = " + survey_id);
+        voteService.scoreVote(array, Integer.parseInt(survey_id));
+        modelAndView.setViewName("home2"); // resources/template/home.html
+        return "home2";
     }
 
     @RequestMapping(value="/create-survey", method=RequestMethod.POST)
@@ -151,16 +156,6 @@ public class SurveyController {
         if(bindingResult.hasErrors() && survey.getDate_one() == null && survey.getDate_two() == null && survey.getDate_three() == null) {
             List<String> cities = cityService.getAllCities();
             System.out.println("***** ERROR *****");
-//
-//                    System.out.println("--------" +
-//                    "\nName = " + survey.getName() +
-//                    "\nDate = " + survey.getDate() +
-//                    "\nActivity = " + survey.getActivity() +
-//                    "\nAttendance = " + survey.getAttendance() +
-//                    "\nUser = " + survey.getUser_id() +
-//                    "\nCity = " + survey.getCity_id() +
-//                    "\n--------"
-//            );
             System.out.println("***********\n");
 
             modelMap.addAttribute("cities", cities);
@@ -172,7 +167,8 @@ public class SurveyController {
             modelMap.addAttribute("cities", cities);
 
             System.out.println("\n***** SUCCESS : GO CHECK DATABASE *****");
-            surveyService.saveSurvey(survey);
+            Vote vote = new Vote();
+            surveyService.saveSurvey(survey, vote);
             modelAndView.addObject("message", "Le sondage a été crée avec succès !");
         }
         modelAndView.addObject("user", new User());

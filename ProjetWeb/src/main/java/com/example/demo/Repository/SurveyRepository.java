@@ -17,6 +17,9 @@ public interface SurveyRepository extends JpaRepository<Survey, Integer> {
     @Query(value = "Select * FROM survey WHERE user_id=?1", nativeQuery = true)
     public List<Survey> findSurvey(int user_id);
 
+    @Query(value = "Select * FROM survey WHERE survey_id=?1", nativeQuery = true)
+    public Survey getSurvey(int survey_id);
+
     @Query(value = "Select * FROM survey", nativeQuery = true)
     public List<Survey> findAllSurvey();
 
