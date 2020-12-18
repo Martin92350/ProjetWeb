@@ -30,7 +30,7 @@
                         <tr th:each="sondage: ${sondages}" style="border: 1px solid white">
                             <td style="font-size: 20; color: #ededed; border: 1px solid white;text-align: center" th:text="${sondage.name}" />
                             <td style="font-size: 20; color: #ededed; border: 1px solid white;text-align: center" th:text="${sondage.activity}" />
-                            <td style="font-size: 20; color: #ededed; border: 1px solid white;text-align: center" th:text="${sondage.attendance}" />
+                                <td style="font-size: 20; color: #ededed; border: 1px solid white;text-align: center" th:text="${sondage.attendance}" />
                             <td style="font-size: 20; color: #ededed; border: 1px solid white;text-align: center" th:text="CREATEUR" />
 
                             <!--  ******  CHANGEMENT *******  -->
@@ -65,11 +65,11 @@
 
                 <div th:each="all_sondage: ${all_sondages}" style="color:white">
                     <h3> Nom du sondage :</h3>
-                    <p th:text="${all_sondage.name}"/>
+                    <p th:text="[NOM DU SONDAGE]"/>
                     <h3> Activité :</h3>
-                    <p th:text="${all_sondage.activity}"/>
+                    <p th:text="[ACTIVITE]"/>
                     <h3> Nombre de personnes :</h3>
-                    <p th:text="${all_sondage.attendance}"/>
+                    <p th:text="[ATTENDANCE]"/>
                     <h3> Créateur :</h3>
                     <p th:text="${all_sondage.user_id}"/>
                     <h3> Dates :</h3>

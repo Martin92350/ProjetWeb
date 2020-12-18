@@ -96,7 +96,7 @@ public class SurveyController {
         System.out.println("liste cities Boolean : " + checkboxCities.toString());
         System.out.println("liste dates : " + allSurvey.get(0).getDate_one());
 
-        modelAndView.setViewName("home"); // resources/template/home.html
+        modelAndView.setViewName("home2"); // resources/template/home.html
         return modelAndView;
     }
 
@@ -138,7 +138,7 @@ public class SurveyController {
         //modelAndView.addObject("creators", creators);
         modelAndView.addObject("user_id", user_id);
 
-        modelAndView.setViewName("home"); // resources/template/home.html
+        modelAndView.setViewName("home2"); // resources/template/home.html
         return "home";
     }
 

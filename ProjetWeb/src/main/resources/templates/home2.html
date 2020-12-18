@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" >
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 <head>
@@ -21,7 +21,8 @@
     h1{
 
         color : #337ab7;
-        position: absolute;
+        /* position:absolute;  */
+
         top :20px;
         left:610px;
 
@@ -29,8 +30,8 @@
 
     h2{
         color :#337ab7;
+        /* position:absolute;  */
         font-size:100%;
-        position:absolute;
         margin-top: 20px;
         margin-left: 20px;
     }
@@ -47,7 +48,7 @@
     a{
         color :black;
         font-size:100%;
-        position:absolute;
+        /* position:absolute;  */
         margin-top: 77px;
         margin-left: 70px;
     }
@@ -107,10 +108,7 @@
 
         height:40px;
         /* margin-top:30px;
-        margin-right:40px; */
-        position: absolute;
-        top:48px;
-        left:1200px;
+        /* margin-right:40px; */
         background-color: #337ab7;
         border: 1px solid #337ab7;
         font-size: 20px;
@@ -119,29 +117,28 @@
     }
 
     #vote{
-        position:absolute;
+        /* position:absolute;  */
         height:30px;
         background-color: #337ab7;
         border: 1px solid #337ab7;
         font-size: 20px;
         color:#ededed;
-        top:380px;
-        left:380px;
+        /* top:380px; */
+        /* left:340px; */
         border-radius: 5px;
 
     }
 
     #close{
 
-        position:absolute;
+        /* position:absolute;  */
         height:20px;
         width: 20px;
         color:#ededed;
         background-color: #b11f1f;
         border: 1px solid #b11f1f;
         font-size:18px;
-        top: 35px;
-        left: 795px;
+        float : right;
         display:flex;
         justify-content: center;
         align-items: center;
@@ -157,41 +154,54 @@
 
     section{
 
-        position:absolute;
+        /* position:absolute;  */
         top:100px;
         left:580px;
         /* right:500px; */
 
     }
 
-    div{
+    .container{
 
         width:800px;
-        height:400px;
+        height:500px;
         background-color: #ededed ;
-        margin : 25px;
+        margin-bottom : 25px;
+        padding : 10px;
         /* border: 3px solid #337ab7; */
 
     }
 
     p{
 
-        position : absolute;
-        margin-top : 180px;
-        margin-left : 250px;
-        padding : 8px 48px;
+        /* position:absolute;  */
+        /* margin-top : 180px; */
+         margin-left : 20px; */
+        /* padding : 8px 48px; */
 
     }
 
+    #title-my-survey{
+        text-align : center;
+    }
+
+    .checkboxes {
+        text-align : center;
+    }
+
+    .button {
+        text-align : center;
+    }
+
     label{
-        position:relative;
+        /* position:relative; */
         left:-53px;
         top:-20px;
     }
 
     label::before{
 
-        position:absolute;
+        /* position:absolute; */
 
     }
 
@@ -209,40 +219,61 @@
 
 <body>
 
-<h1>Liste de mes sondages</h1>
+<h1 id="title-my-survey">Liste de mes sondages</h1>
 <button class="btn btn-lg btn-primary"  name="Submit" value="Create" type="Submit">
     creer un sondage
 </button>
 
 <section>
 
-    <div>
-        <h2>[Nom du Sondage]</h2>
-        <h7>par [Nom du createur]</h7>
-        <button id="close">X</button>
-        <h3>Activite:</h3>
-        <a>[ACTIVITE]</a>
-        <h4>Propositions de lieux pour cette activite:</h4>
-        <p>
-            <input type="checkbox" id="city_one"/>
-            <label for="city_one">[city_one]</label>
-            <input type="checkbox" id="city_two"/>
-            <label for="city_two">[city_two]</label>
-            <input type="checkbox" id="city_three"/>
-            <label for="city_three">[city_three]</label>
-        </p>
-        <h5>Propositions de date pour cette activite:</h5>
-        <p1>
-            <input type="checkbox" id="date_one"/>
-            <label for="date_one">[date_one]</label>
-            <input type="checkbox" id="date_two"/>
-            <label for="date_two">[date_two]</label>
-            <input type="checkbox" id="date_three"/>
-            <label for="date_three">[date_three]</label>
-        </p1>
-        <h6>[Attendance]</h6>
-        <h8>personnes attendues</h8>
-        <button id="vote"  name="Submit" value="Create" type="Submit">Soumettre votre vote</button>
+    <div th:each="sondage: ${sondages}" class="container">
+        <div>
+            <button id="close">X</button>
+        </div>
+
+        <div>
+            <h2 th:text="${sondage.name}"/>
+            <p th:text="CREATEUR"/>
+        </div>
+
+        <div>
+            <h2>Activite:</h2>
+            <p th:text="${sondage.activity}" />
+        </div>
+
+        <div>
+            <h2>Propositions de lieux pour cette activite:</h2>
+            <p class="checkboxes">
+                <input type="checkbox" id="city_one"/>
+                <label for="city_one">[city_one]</label>
+
+                <input type="checkbox" id="city_two"/>
+                <label for="city_two">[city_two]</label>
+
+                <input type="checkbox" id="city_three"/>
+                <label for="city_three">[city_three]</label>
+            </p>
+        </div>
+
+        <div>
+            <h2>Propositions de dates pour cette activite:</h2>
+            <p class="checkboxes">
+                <input type="checkbox" id="date_one"/>
+                <label for="date_one">[date_one]</label>
+                <input type="checkbox" id="date_two"/>
+                <label for="date_two">[date_two]</label>
+                <input type="checkbox" id="date_three"/>
+                <label for="date_three">[date_three]</label>
+            </p>
+        </div>
+
+        <div>
+            <h2 th:text="${sondage.attendance}" />
+            <p>personnes attendues</p>
+        </div>
+        <div class="button">
+            <button id="vote"  name="Submit" value="Create" type="Submit">Soumettre votre vote</button>
+        </div>
     </div>
 
 </section>
