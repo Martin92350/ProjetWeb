@@ -54,7 +54,6 @@ public class UserServiceImp implements UserService {
     public List<String> getAllCreators() {
         List<String> creators = new ArrayList<>();
         creators = userRepo.getAllCreators();
-        System.out.println("CREATORS == " + creators.toString());
         return creators;
     }
 

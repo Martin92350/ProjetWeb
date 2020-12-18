@@ -23,15 +23,12 @@ public class CityServiceImp implements CityService{
     }
 
     public List<String> getAllCitiesOne() {
-        System.out.println("CITIES ONE : " + cityRepo.getAllCitiesOne());
         return cityRepo.getAllCitiesOne();
     }
     public List<String> getAllCitiesTwo() {
-        System.out.println("CITIES TWO : " + cityRepo.getAllCitiesTwo());
         return cityRepo.getAllCitiesTwo();
     }
     public List<String> getAllCitiesThree() {
-        System.out.println("CITIES THREE : " + cityRepo.getAllCitiesThree());
         return cityRepo.getAllCitiesThree();
     }
 

@@ -5,7 +5,6 @@
 <head>
     <title>Bienvenue sur mon site !</title>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-    <!-- <link rel="stylesheet" media="screen" type="text/css" title="Design" href="index.css" />  -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -219,7 +218,10 @@
 </style>
 
 <body>
+<a href="/login">
+    <p style="color:#337ab7" >Déconnexion</p>
 
+</a>
 <h1 id="title-my-survey">Liste des sondages</h1>
 <div class="button">
     <a href="/create-survey">
@@ -252,13 +254,13 @@
         <div>
             <h2>Propositions de lieux pour cette activité:</h2>
             <p class="checkboxes">
-                <input type="checkbox" id="city_one"/>
+                <input type="checkbox" id="city_one" th:name="${sondage.survey_id}" value="1" />
                 <label for="city_one" id="check1" th:text="${citiesOne[iStat.index]}" />
 
-                <input type="checkbox" id="city_two"/>
+                <input type="checkbox" id="city_two" th:name="${sondage.survey_id}" value="2" />
                 <label for="city_two" id="check2" th:text="${citiesTwo[iStat.index]}" />
 
-                <input type="checkbox" id="city_three"/>
+                <input type="checkbox" id="city_three" th:name="${sondage.survey_id}" value="3" />
                 <label for="city_three" id="check3" th:text="${citiesThree[iStat.index]}" />
             </p>
         </div>
@@ -266,11 +268,11 @@
         <div>
             <h2>Propositions de dates pour cette activité:</h2>
             <p class="checkboxes">
-                <input type="checkbox" id="date_one"/>
+                <input type="checkbox" id="date_one" th:name="${sondage.survey_id}" value="1"/>
                 <label for="date_one" th:text="${#dates.format(sondage.date_one, 'dd/MM/yyyy')}" />
-                <input type="checkbox" id="date_two"/>
+                <input type="checkbox" id="date_two" th:name="${sondage.survey_id}" value="2"/>
                 <label for="date_two" th:text="${#dates.format(sondage.date_two, 'dd/MM/yyyy')}" />
-                <input type="checkbox" id="date_three"/>
+                <input type="checkbox" id="date_three" th:name="${sondage.survey_id}" value="3"/>
                 <label for="date_three" th:text="${#dates.format(sondage.date_three, 'dd/MM/yyyy')}" />
             </p>
         </div>
@@ -303,9 +305,29 @@
     }
 
     function vote(survey_id) {
+        var array = [];
         console.log("survey_id : ", survey_id);
-        console.log("checkbox : ", $('#check1').is(':checked'));
+        $('input[name="' + survey_id + '"]').each(function() {
+           if(this.checked) {
+                array.push(true);
+           }
+           else {
+                array.push(false);
+           }
+        });
+        console.log("Array : ", array);
 
+        $.ajax({
+            type: 'POST',
+            url: "/vote/"+array+"/survey_id/"+survey_id,
+            contentType: 'text/plain',
+            success:function(response) {
+                console.log("good");
+            },
+            error : function(response){
+                console.log("wrong");
+            }
+        });
     }
 
 </script>
