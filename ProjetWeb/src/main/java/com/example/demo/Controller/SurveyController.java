@@ -87,7 +87,7 @@ public class SurveyController {
         modelAndView.addObject("checkboxesDates", checkboxDates);
         modelAndView.addObject("checkboxCities", checkboxCities);
 
-        modelAndView.setViewName("home2"); // resources/template/home.html
+        modelAndView.setViewName("home"); // resources/template/home.html
         return modelAndView;
     }
 
@@ -122,19 +122,18 @@ public class SurveyController {
         modelAndView.addObject("all_sondages", allSurvey);
         modelAndView.addObject("cities", cities);
         //modelAndView.addObject("creators", creators);
-        modelAndView.addObject("user_id", user_id);
+//        modelAndView.addObject("user_id", user_id);
 
-        modelAndView.setViewName("home2"); // resources/template/home.html
+        modelAndView.setViewName("home"); // resources/template/home.html
         return "home";
     }
 
     @RequestMapping(value = "/vote/{array}/survey_id/{survey_id}", method = RequestMethod.POST)
     public String getVote(@PathVariable("array") List<Boolean> array, @PathVariable("survey_id") String survey_id) {
         ModelAndView modelAndView = new ModelAndView();
-        System.out.println("survey in param = " + survey_id);
         voteService.scoreVote(array, Integer.parseInt(survey_id));
-        modelAndView.setViewName("home2"); // resources/template/home.html
-        return "home2";
+        modelAndView.setViewName("home"); // resources/template/home.html
+        return "home";
     }
 
     @RequestMapping(value="/create-survey", method=RequestMethod.POST)

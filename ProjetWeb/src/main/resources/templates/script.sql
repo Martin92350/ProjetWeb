@@ -85,14 +85,10 @@ CREATE TABLE `vote` (
   CONSTRAINT `FK_survey_id` FOREIGN KEY (`survey_id`) REFERENCES `survey` (`survey_id`) ON DELETE CASCADE
 );
 
-INSERT INTO survey VALUES('1','Travis Scott à Paris !','2021-06-01','Concert','100','1','1','2','3','2021-06-01','2022-06-08');
-INSERT INTO survey VALUES('2','Révisions avant les partiels','2020-12-17','Etudes','6','1','1','2','5','2022-06-01','2021-06-08');
+INSERT INTO survey VALUES('1','Travis Scott a Paris !','2021-06-01','Concert','100','1','1','2','3','2021-06-01','2022-06-08');
+INSERT INTO survey VALUES('2','Revisions avant les partiels','2020-12-17','Etudes','6','1','1','2','5','2022-06-01','2021-06-08');
 INSERT INTO survey VALUES('3','Marche contre la discrimination','2021-02-01','Manifestation','50','1','4','5','1','2022-06-01','2021-06-08');
-INSERT INTO survey VALUES('4','Repas de Noël','2020-12-05','Dinner','15','2','1','3','4','2021-06-01','2022-06-08');
-
 
 INSERT INTO vote VALUES('1','1','0','0','0','0','0','0');
 INSERT INTO vote VALUES('2','2','0','0','0','0','0','0');
 INSERT INTO vote VALUES('3','3','0','0','0','0','0','0');
-INSERT INTO vote VALUES('4','4','0','0','0','0','0','0');
-

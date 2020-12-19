@@ -1,178 +1,332 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="utf-8">
-        <title>Accueil</title>
-        <link href="/style.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    </head>
-    <body  style="background-color: #313030;">
-        <div style="background-color:#337ab7;height:50px;">
-            <p style="color:white;text-align: center;padding-top:1%"> HELLO USER, WELCOME HOME</p>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<head>
+    <title>Bienvenue sur mon site !</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<style>
+
+    body{
+
+        background-color: #313030;
+    }
+
+    h1{
+
+        color : #337ab7;
+        /* position:absolute;  */
+        top :20px;
+        left:610px;
+
+    }
+
+    h2{
+        color :#337ab7;
+        /* position:absolute;  */
+        font-size:100%;
+        margin-top: 20px;
+        margin-left: 20px;
+    }
+
+    h3{
+        color :#337ab7;
+        font-size:100%;
+        position:absolute;
+        margin-top: 80px;
+        margin-left: 20px;
+
+    }
+
+    a{
+        color :black;
+        font-size:100%;
+        /* position:absolute;  */
+        margin-top: 77px;
+        margin-left: 70px;
+    }
+
+    h7{
+        color :#8a8c8d;
+        font-size:80%;
+        position:absolute;
+        margin-top: 34px;
+        margin-left: 20px;
+    }
+
+    h8{
+        color :#8a8c8d;
+        font-size:80%;
+        position:absolute;
+        margin-top: 34px;
+        margin-left: 615px;
+    }
+
+    h4{
+        color :#337ab7;
+        font-size:100%;
+        position:absolute;
+        margin-top: 150px;
+        margin-left: 20px;
+    }
+
+    h5{
+        color :#337ab7;
+        font-size:100%;
+        position:absolute;
+        margin-top: 250px;
+        margin-left: 20px;
+    }
+
+    h6{
+        color :black;
+        font-size:100%;
+        position:absolute;
+        margin-top: 20px;
+        margin-left: 640px;
+    }
+
+
+
+    input[type="checkbox"]{
+
+        display:inline-block;
+        margin-right:10px;
+        margin-top:20px;
+
+    }
+
+
+    button{
+
+        height:40px;
+        /* margin-top:30px;
+        /* margin-right:40px; */
+        background-color: #337ab7;
+        border: 1px solid #337ab7;
+        font-size: 20px;
+        color:#ededed
+
+    }
+
+    #vote{
+        /* position:absolute;  */
+        height:30px;
+        background-color: #337ab7;
+        border: 1px solid #337ab7;
+        font-size: 20px;
+        color:#ededed;
+        /* top:380px; */
+        /* left:340px; */
+        border-radius: 5px;
+
+    }
+
+    #close{
+
+
+        /* position:absolute;  */
+
+        height:20px;
+        width: 20px;
+        color:#ededed;
+        background-color: #b11f1f;
+        border: 1px solid #b11f1f;
+        font-size:18px;
+        float : right;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 150px;
+        background: #b11f1f;
+        box-shadow:  7px 7px 0px #ededed,
+        -7px -7px 0px #ededed;
+        box-shadow: 7px 7px 100px #dbdfe5,
+       -7px -7px 100px #dfe3e9; */
+
+    }
+
+    section{
+      
+        /* position:absolute;  */
+        top:100px;
+        left:580px;
+        /* right:500px; */
+
+    }
+  
+    .container{
+
+        width:800px;
+        height:500px;
+        background-color: #ededed ;
+        margin-bottom : 25px;
+        padding : 10px;
+        /* border: 3px solid #337ab7; */
+
+    }
+
+    p{
+      /* position:absolute;  */
+        /* margin-top : 180px; */
+         margin-left : 20px; */
+        /* padding : 8px 48px; */
+
+    }
+
+    #title-my-survey{
+        text-align : center;
+    }
+
+    .checkboxes {
+        text-align : center;
+    }
+
+    .button {
+        text-align : center;
+        margin-bottom : 10px;
+    }
+
+    label{
+        /* position:relative; */
+        left:-53px;
+        top:-20px;
+    }
+
+    label::before{
+        /* position:absolute; */
+    }
+
+    p1{
+
+        position : absolute;
+        margin-top : 280px;
+        margin-left : 250px;
+        padding : 8px 48px;
+
+    }
+
+
+</style>
+
+<body>
+<a href="/login">
+    <p style="color:#337ab7" >Déconnexion</p>
+
+</a>
+<h1 id="title-my-survey">Liste des sondages</h1>
+<div class="button">
+    <a href="/create-survey">
+        <button class="btn btn-lg btn-primary"  name="Submit" value="Create" type="Submit">
+            Créer un sondage
+        </button>
+    </a>
+</div>
+
+<section>
+
+    <div th:each="sondage, iStat : ${all_sondages}" class="container">
+        <div>
+            <button id="close"
+                    th:onclick="'javascript:deleteSurvey(' + ${sondage.survey_id} + ')'">
+                X
+            </button>
         </div>
 
-        <div class="contenu" style="margin-left:10px">
-
-            <div class="vos-sondages">
-                <h2 class="form-signin-heading" style="font-size: 20; color: #ededed;">LISTE DE VOS SONDAGES</h2>
-                <table style="border: 1px solid white">
-                    <thead style="border: 1px solid white">
-                        <tr style="border: 1px solid white">
-                            <th style="font-size: 20; color: #ededed; background-color:#0f0f0f;padding:20px;border:solid 1px #ededed;" >Nom du sondage</th>
-                            <th style="font-size: 20; color: #ededed; background-color:#0f0f0f;padding:20px;border:solid 1px #ededed;" >Activite</th>
-                            <th style="font-size: 20; color: #ededed; background-color:#0f0f0f;padding:20px;border:solid 1px #ededed;" >Nombre de personnes</th>
-                            <th style="font-size: 20; color: #ededed; background-color:#0f0f0f;padding:20px;border:solid 1px #ededed;" >Createur du sondage</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr th:each="sondage: ${sondages}" style="border: 1px solid white">
-                            <td style="font-size: 20; color: #ededed; border: 1px solid white;text-align: center" th:text="${sondage.name}" />
-                            <td style="font-size: 20; color: #ededed; border: 1px solid white;text-align: center" th:text="${sondage.activity}" />
-                                <td style="font-size: 20; color: #ededed; border: 1px solid white;text-align: center" th:text="${sondage.attendance}" />
-                            <td style="font-size: 20; color: #ededed; border: 1px solid white;text-align: center" th:text="CREATEUR" />
-
-                            <!--  ******  CHANGEMENT *******  -->
-
-                            <td>
-                                <a  target="/home">
-                                    <button class="btn btn-lg btn-primary deleteBtn"
-                                            th:onclick="'javascript:deleteSurvey(' + ${sondage.survey_id} + ')'"
-                                            type="Submit" style="margin-right:10px;">
-                                        X
-                                    </button>
-                                </a>
-                            </td>
-
-                            <!--  *************************  -->
-
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="btnCreate" style="margin-top:20px">
-                <a href="/create-survey">
-                    <button class="btn btn-lg btn-primary" type="Submit" style="margin-right:10px;">
-                        Créer un sondage
-                    </button>
-                </a>
-            </div>
-
-            <div class="all-sondages">
-                <h2 class="form-signin-heading" style="font-size: 20; color: #ededed;">LISTE DE TOUS LES SONDAGES</h2>
-
-                <div th:each="all_sondage: ${all_sondages}" style="color:white">
-                    <h3> Nom du sondage :</h3>
-                    <p th:text="[NOM DU SONDAGE]"/>
-                    <h3> Activité :</h3>
-                    <p th:text="[ACTIVITE]"/>
-                    <h3> Nombre de personnes :</h3>
-                    <p th:text="[ATTENDANCE]"/>
-                    <h3> Créateur :</h3>
-                    <p th:text="${all_sondage.user_id}"/>
-                    <h3> Dates :</h3>
-                    <div th:each="checkbox: ${checkboxes}" style="color:white">
-                        <input type="checkbox" th:checked="${checkbox}"/>
-                        <label class="custom-control-label" th:text="${all_sondage.date_one}"/>
-                    </div>
-<!--                        <div>-->
-<!--                            <input type="checkbox" th:checked="${checkbox.date1}"/>-->
-<!--                            <label class="custom-control-label" th:text="${all_sondage.date_one}"/>-->
-<!--                        </div>-->
-<!--                        <div>-->
-<!--                            <input type="checkbox" th:checked="${checkbox.date2}"/>-->
-<!--                            <label class="custom-control-label" th:text="${all_sondage.date_two}"/>-->
-<!--                        </div>-->
-<!--                        <div>-->
-<!--                            <input type="checkbox" th:checked="${checkbox.date3}"/>-->
-<!--                            <label class="custom-control-label" th:text="${all_sondage.date_three}"/>-->
-<!--                        </div>-->
-<!--                        <h3> Villes :</h3>-->
-<!--                        <div>-->
-<!--                            <input type="checkbox" th:checked="${checkbox.city1}"/>-->
-<!--                            <label class="custom-control-label" th:text="${all_sondage.city_id_one}"/>-->
-<!--                        </div>-->
-<!--                        <div>-->
-<!--                            <input type="checkbox" th:checked="${checkbox.city2}"/>-->
-<!--                            <label class="custom-control-label" th:text="${all_sondage.city_id_two}"/>-->
-<!--                        </div>-->
-<!--                        <div>-->
-<!--                            <input type="checkbox" th:checked="${checkbox.city3}"/>-->
-<!--                            <label class="custom-control-label" th:text="${all_sondage.city_id_three}"/>-->
-<!--                        </div>-->
-<!--                        <div>-->
-                            <button class="btn btn-lg btn-primary redirect" th:onclick="'javascript:vote()'"
-                                    type="Submit" style="margin-right:10px;">
-                                Vote
-                            </button>
-                        </div>
-                    <br/><br/>
-                </div>
-
-
-
-<!--                <table style="border: 1px solid white">-->
-<!--                    <thead style="border: 1px solid white">-->
-<!--                        <tr style="border: 1px solid white">-->
-<!--                            <th style="font-size: 20; color: #ededed; background-color:#0f0f0f;padding:20px;border:solid 1px #ededed;" >Nom du sondage</th>-->
-<!--                            <th style="font-size: 20; color: #ededed; background-color:#0f0f0f;padding:20px;border:solid 1px #ededed;" >Activite</th>-->
-<!--                            <th style="font-size: 20; color: #ededed; background-color:#0f0f0f;padding:20px;border:solid 1px #ededed;" >Nombre de personnes</th>-->
-<!--                            <th style="font-size: 20; color: #ededed; background-color:#0f0f0f;padding:20px;border:solid 1px #ededed;" >Createur du sondage</th>-->
-<!--                            <th style="font-size: 20; color: #ededed; background-color:#0f0f0f;padding:20px;border:solid 1px #ededed;" >Date 1</th>-->
-<!--                            <th style="font-size: 20; color: #ededed; background-color:#0f0f0f;padding:20px;border:solid 1px #ededed;" >City 3</th>-->
-<!--                        </tr>-->
-<!--                    </thead>-->
-<!--                    <tbody>-->
-<!--                        <tr th:each="all_sondage: ${all_sondages}" style="border: 1px solid white">-->
-<!--                            <td style="font-size: 20; color: #ededed; border: 1px solid white;text-align: center" th:text="${all_sondage.name}" />-->
-<!--                            <td style="font-size: 20; color: #ededed; border: 1px solid white;text-align: center" th:text="${all_sondage.activity}" />-->
-<!--                            <td style="font-size: 20; color: #ededed; border: 1px solid white;text-align: center" th:text="${all_sondage.attendance}" />-->
-<!--                            <td style="font-size: 20; color: #ededed; border: 1px solid white;text-align: center" th:text="CREATEUR" />-->
-<!--                            <td style="font-size: 20; color: #ededed; border: 1px solid white;text-align: center">-->
-<!--                                <input type="radio" name="radios" id="radio1" />-->
-<!--                            </td>-->
-<!--                            <td style="font-size: 20; color: #ededed; border: 1px solid white;text-align: center" th:text="${all_sondage.city_id_one}" />-->
-
-
-<!--&lt;!&ndash;                              ******  CHANGEMENT *******&ndash;&gt;-->
-
-
-
-<!--&lt;!&ndash;                              *************************&ndash;&gt;-->
-
-
-<!--                        </tr>-->
-<!--                    </tbody>-->
-<!--                </table>-->
-            </div>
-
+        <div>
+            <h2 th:text="${sondage.name}"/>
+            <p th:text="'crée par ' +  ${creators[iStat.index]}"/>
         </div>
 
-        <!--  ******  CHANGEMENT *******  -->
-        <script>
-            function deleteSurvey(survey_id) {
-               $.ajax({
-                    type: 'DELETE',
-                    url: "/home/"+survey_id,
-                    contentType: 'text/plain',
-                    success:function(response) {
-                        console.log("good");
-                    },
-                    error : function(response){
-                        console.log("wrong");
-                    }
-                });
-                document.location.reload();
+        <div>
+            <h2>Activite:</h2>
+            <p th:text=" ${sondage.activity}" />
+        </div>
 
+        <div>
+            <h2>Propositions de lieux pour cette activité:</h2>
+            <p class="checkboxes">
+                <input type="checkbox" id="city_one" th:name="${sondage.survey_id}" value="1" />
+                <label for="city_one" id="check1" th:text="${citiesOne[iStat.index]}" />
+
+                <input type="checkbox" id="city_two" th:name="${sondage.survey_id}" value="2" />
+                <label for="city_two" id="check2" th:text="${citiesTwo[iStat.index]}" />
+
+                <input type="checkbox" id="city_three" th:name="${sondage.survey_id}" value="3" />
+                <label for="city_three" id="check3" th:text="${citiesThree[iStat.index]}" />
+            </p>
+        </div>
+
+        <div>
+            <h2>Propositions de dates pour cette activité:</h2>
+            <p class="checkboxes">
+                <input type="checkbox" id="date_one" th:name="${sondage.survey_id}" value="1"/>
+                <label for="date_one" th:text="${#dates.format(sondage.date_one, 'dd/MM/yyyy')}" />
+                <input type="checkbox" id="date_two" th:name="${sondage.survey_id}" value="2"/>
+                <label for="date_two" th:text="${#dates.format(sondage.date_two, 'dd/MM/yyyy')}" />
+                <input type="checkbox" id="date_three" th:name="${sondage.survey_id}" value="3"/>
+                <label for="date_three" th:text="${#dates.format(sondage.date_three, 'dd/MM/yyyy')}" />
+            </p>
+        </div>
+
+        <div>
+            <h2 th:text="${sondage.attendance}" />
+            <p>personnes attendues</p>
+        </div>
+        <div class="button">
+            <button id="vote" th:onclick="'javascript:vote(' + ${sondage.survey_id} + ')'" name="Submit" value="Create" type="Submit">Soumettre votre vote</button>
+        </div>
+    </div>
+
+</section>
+
+<script>
+    function deleteSurvey(survey_id) {
+        $.ajax({
+            type: 'DELETE',
+            url: "/home/"+survey_id,
+            contentType: 'text/plain',
+            success:function(response) {
+                console.log("good");
+            },
+            error : function(response){
+                console.log("wrong");
             }
+        });
+        document.location.reload();
+    }
 
-            function vote() {
-               console.log("hi");
+    function vote(survey_id) {
+        var array = [];
+        console.log("survey_id : ", survey_id);
+        $('input[name="' + survey_id + '"]').each(function() {
+           if(this.checked) {
+                array.push(true);
+           }
+           else {
+                array.push(false);
+           }
+        });
+        console.log("Array : ", array);
+
+        $.ajax({
+            type: 'POST',
+            url: "/vote/"+array+"/survey_id/"+survey_id,
+            contentType: 'text/plain',
+            success:function(response) {
+                console.log("good");
+            },
+            error : function(response){
+                console.log("wrong");
             }
-        </script>
-        <!--  *************************  -->
+        });
+    }
+</script>
 
-    </body>
+</body>
 </html>
